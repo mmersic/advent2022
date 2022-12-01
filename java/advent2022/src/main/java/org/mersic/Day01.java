@@ -14,8 +14,7 @@ public class Day01 {
                         .stream().collect(Collectors.joining(","))
                         .split(",,"))
                 .map(y -> y.split(","))
-                .map(z -> Arrays.stream(z).filter(a -> !a.equals(""))
-                        .mapToInt(Integer::parseInt).sum())
+                .map(z -> Arrays.stream(z).mapToInt(Integer::parseInt).sum())
                 .sorted(Comparator.reverseOrder())
                 .toList();
 
