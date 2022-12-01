@@ -5,15 +5,17 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Day01 {
     public static void main(String[] args) throws Exception {
         /* To be clear, this is just for fun. I would never write code like this for a real application! */
         List<Integer> cals = Arrays.stream(Files.readAllLines(Path.of(Day01.class.getClassLoader().getResource("day.01.input").toURI()))
-                        .stream().map(x -> x.equals("") ? "X" : x).reduce("", (a, b) -> a + "," + b).split("X"))
+                        .stream().collect(Collectors.joining(","))
+                        .split(",,"))
                 .map(y -> y.split(","))
                 .map(z -> Arrays.stream(z).filter(a -> !a.equals(""))
-                        .map(Integer::parseInt).reduce(0, Integer::sum))
+                        .mapToInt(Integer::parseInt).sum())
                 .sorted(Comparator.reverseOrder())
                 .toList();
 
