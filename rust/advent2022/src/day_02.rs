@@ -35,7 +35,7 @@ pub fn go() {
 
     let s: (i32, i32) = include_str!("../inputs/day.02.input")
         .split("\n")
-        .map(|x| (s1.get(x).unwrap().clone(), s2.get(x).unwrap().clone()))
+        .map(|x| (*s1.get(x).unwrap(), *s2.get(x).unwrap()))
         .reduce(|x, y| (x.0 + y.0, x.1 + y.1)).unwrap();
 
     println!("day 2 part 1: {}", s.0);
