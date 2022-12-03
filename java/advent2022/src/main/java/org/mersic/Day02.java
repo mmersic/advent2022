@@ -3,7 +3,6 @@ package org.mersic;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Day02 {
@@ -42,9 +41,12 @@ public class Day02 {
     }
     
     public static void main(String[] args) throws Exception {
-        List<String> input = Files.readAllLines(Path.of(Day02.class.getClassLoader().getResource("day.02.input").toURI()));
-        
-        System.out.println("part1: " + input.stream().mapToInt(SCORE_P1::get).sum());
-        System.out.println("part2: " + input.stream().mapToInt(SCORE_P2::get).sum());
+        record Scores(int s1, int s2) {}
+        Scores s = Files.readAllLines(Path.of(Day02.class.getClassLoader().getResource("day.02.input").toURI())).stream()
+                .map(x -> new Scores(SCORE_P1.get(x), SCORE_P2.get(x)))
+                .reduce((x,y)->new Scores(x.s1 + y.s1, x.s2 + y.s2)).get();
+
+        System.out.println("day 2 part 1: " + s.s1);
+        System.out.println("day 2 part 2: " + s.s2);
     }
 }
