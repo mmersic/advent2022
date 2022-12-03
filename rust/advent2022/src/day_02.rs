@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 pub fn go() {
-    let mut s1 = HashMap::new();
+    let mut s1 : HashMap<&str, u32> = HashMap::new();
     s1.insert("A X", 1+3);
     s1.insert("A Y", 2+6);
     s1.insert("A Z", 3+0);
@@ -16,7 +16,7 @@ pub fn go() {
     s1.insert("C Y", 2+0);
     s1.insert("C Z", 3+3);
 
-    let mut s2 = HashMap::new();
+    let mut s2 : HashMap<&str, u32> = HashMap::new();
     //ROCK 
     s2.insert("A X", 3+0);
     s2.insert("A Y", 1+3);
@@ -33,7 +33,7 @@ pub fn go() {
     s2.insert("C Z", 1+6);
     
 
-    let s: (i32, i32) = include_str!("../inputs/day.02.input")
+    let s: (u32, u32) = include_str!("../inputs/day.02.input")
         .split("\n")
         .map(|x| (*s1.get(x).unwrap(), *s2.get(x).unwrap()))
         .reduce(|x, y| (x.0 + y.0, x.1 + y.1)).unwrap();
