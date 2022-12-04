@@ -17,7 +17,7 @@ public class Day03 {
     }
     
     public static void main(String args[]) throws Exception {
-        List<String> input = Files.readAllLines(Path.of(Day02.class.getClassLoader().getResource("day.03.input").toURI()));
+        List<String> input = Files.readAllLines(Path.of(Day03.class.getClassLoader().getResource("day.03.input").toURI()));
         
         int totalPriority = 0;
         for (String s : input) {

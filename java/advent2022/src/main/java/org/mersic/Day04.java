@@ -48,7 +48,7 @@ public class Day04 {
     }
     
     public static void main(String args[]) throws Exception {
-        List<String> input = Files.readAllLines(Path.of(Day02.class.getClassLoader().getResource("day.04.input").toURI()));
+        List<String> input = Files.readAllLines(Path.of(Day04.class.getClassLoader().getResource("day.04.input").toURI()));
         
         int overlapCount = 0;
         int anyOverlapCount = 0;
