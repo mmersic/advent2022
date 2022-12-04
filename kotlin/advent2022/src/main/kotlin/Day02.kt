@@ -16,10 +16,9 @@ private val SCORE_P2 = mapOf(
 
 fun main() {
     val scores = Files.readAllLines(Path.of(Stub().javaClass.getClassLoader().getResource("day.02.input").toURI())).stream()
-        .map { x -> Pair(SCORE_P1.get(x), SCORE_P2.get(x)) }
-        .reduce{ acc, x -> Pair(acc.first!! + x.first!!, acc.second!! + x.second!!) }.get()
-    
-    
+        .map { x -> Pair(SCORE_P1[x], SCORE_P2[x]) }
+        .reduce(Pair(0, 0)) { acc, x -> Pair(acc.first!! + x.first!!, acc.second!! + x.second!!) }
+
     println("day 2 part 1: " + scores.first)
     println("day 2 part 2: " + scores.second)
 }
