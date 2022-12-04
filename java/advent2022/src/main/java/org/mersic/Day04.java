@@ -21,17 +21,17 @@ public class Day04 {
     }
     
     public static boolean rcontains(int x1, int x2, int y1, int y2) {
-        
-        //first contains the second
-        if (x1 <= y1 && x2 >= y2 && x2 >= y1) {
-            return true;
-        }
+        int[] count = overlap(x1, x2, y1, y2);
+        int[] range = new int[] {x1, x2, y1, y2};
 
-        //second contains the first
-        if (y1 <= x1 && y2 >= x2 && y2 >= x1) {
+        next: for (int i = 0; i < range.length; i+=2) {
+            for (int j = range[i]; j <= range[i+1]; j++) {
+                if (count[j] != 2) {
+                    continue next;
+                }
+            }
             return true;
         }
-        
         return false;
     }
     
