@@ -2,9 +2,7 @@ package org.mersic;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Day03 {
     
@@ -23,12 +21,8 @@ public class Day03 {
         for (String s : input) {
             String s1 = s.substring(0, s.length()/2);
             String s2 = s.substring(s.length()/2);
-            Set<Character> set1 = new HashSet<>();
             for (char c : s1.toCharArray()) {
-                set1.add(c);
-            }
-            for (char c : s2.toCharArray()) {
-                if (set1.contains(c)) {                     
+                if (s2.indexOf(c) >= 0) {
                     totalPriority += score(c);
                     break;
                 }
@@ -40,19 +34,9 @@ public class Day03 {
             String s1 = input.get(i);
             String s2 = input.get(i+1);
             String s3 = input.get(i+2);
-            
-            Set<Character> set1 = new HashSet<>();
+
             for (char c : s1.toCharArray()) {
-                set1.add(c);
-            }
-            Set<Character> set2 = new HashSet<>();
-            for (char c : s2.toCharArray()) {
-                if (set1.contains(c)) {
-                    set2.add(c);
-                }
-            }
-            for (char c : s3.toCharArray()) {
-                if (set2.contains(c)) {
+                if (s2.indexOf(c) >= 0 && s3.indexOf(c) >= 0) {
                     totalPriority2 += score(c);
                     break;
                 }
