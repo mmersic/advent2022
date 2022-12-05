@@ -17,23 +17,27 @@ fun main() {
         val l1 = line.substring(0, line.length/2)
         val l2 = line.substring(line.length/2)
         
-        val s1 = HashSet<Char>()
-        val s2 = HashSet<Char>()
-        s1.addAll(l1.asSequence())
-        s2.addAll(l2.asSequence())
-        val s3 = s1.intersect(s2)
-        totalPriority += s3.stream().map { x -> score(x) }.reduce(0) { acc, x -> acc + x }
+        for (c in l1) {
+            if (l2.contains(c)) {
+                totalPriority += score(c)
+                break
+            }
+        }
     }
     
     var totalPriority2 = 0
     for (i in lines.indices step 3) {
-        val s1 = HashSet<Char>(); s1.addAll(lines[i].asSequence())
-        val s2 = HashSet<Char>(); s2.addAll(lines[i+1].asSequence())
-        val s3 = HashSet<Char>(); s3.addAll(lines[i+2].asSequence())
-        val s4 = s1.intersect(s2).intersect(s3)
-        totalPriority2 += s4.stream().map { x -> score(x) }.reduce(0) { acc, x -> acc + x }
+        val l1 = lines[i]
+        val l2 = lines[i+1]
+        val l3 = lines[i+2]
+        
+        for (c in l1) {
+            if (l2.contains(c) && l3.contains(c)) {
+                totalPriority2 += score(c)
+                break
+            }
+        }
     }
-    
     
     println("day 3 part 1: $totalPriority")
     println("day 3 part 2: $totalPriority2")
