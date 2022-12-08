@@ -40,9 +40,7 @@ public class Day05 {
         
         List<List<Character>> stacks2 = new ArrayList<>();
         for (List<Character> s : stacks) {
-            List<Character> c = new ArrayList<>();
-            c.addAll(s);
-            stacks2.add(c);
+            stacks2.add(new ArrayList<>(s));
         }
         
         int starting = i;
