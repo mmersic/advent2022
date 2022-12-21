@@ -102,22 +102,23 @@ public class Day19 {
             BP bp = new BP(Integer.parseInt(s[1]),Integer.parseInt(s[2]),Integer.parseInt(s[3]),Integer.parseInt(s[4]),Integer.parseInt(s[5]),Integer.parseInt(s[6]),Integer.parseInt(s[7]));
             bluePrints.add(bp);
         }
-        
+        long part1Start = System.currentTimeMillis();
         int part1 = 0;
         for (BP bp : bluePrints) {
             memo = new HashMap<>();
             int maxGeodes = findMaxGeodes(bp, 1, 24, new Resources(1, 0, 0, 0,1, 0, 0, 0));
             part1 += (bp.bpNum * maxGeodes);
         }
-        
+        long part1Finish = System.currentTimeMillis();
         int part2 = 1;
         for (int i = 0; i < 3 && i < bluePrints.size(); i++) {
             memo = new HashMap<>();
             int maxGeodes = findMaxGeodes(bluePrints.get(i), 1, 32, new Resources(1, 0, 0, 0,1, 0, 0, 0));
             part2 *= maxGeodes;
         }
-
-        System.out.println("day 19 part 1: " + part1);
-        System.out.println("day 19 part 2: " + part2);
+        long part2Finish = System.currentTimeMillis();
+        
+        System.out.println("day 19 part 1: " + part1 + " in time: " + (part1Finish-part1Start) + "ms");
+        System.out.println("day 19 part 2: " + part2 + " in time: " + (part2Finish-part1Finish) + "ms");
     }
 }
