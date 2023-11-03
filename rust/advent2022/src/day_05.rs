@@ -41,13 +41,13 @@ pub fn go() {
     
     let mut part1 : String = String::new();
     for v in v1 {
-        part1.push(*v.last().expect("should have at least one"));
+        part1.push(*(v.last().expect("should have at least one")));
     }
     println!("part1: {}", part1);
 
     let mut part2 : String = String::new();
     for v in v2 {
-        part2.push(*v.last().expect("should have at least one"));
+        part2.push(*(v.last().expect("should have at least one")));
     }
     
     println!("part2: {}", part2);

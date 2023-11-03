@@ -3,6 +3,7 @@ mod day_02;
 mod day_03;
 mod day_04;
 mod day_05;
+mod day_06;
 
 fn all() {
     day_01::go();
@@ -10,8 +11,9 @@ fn all() {
     day_03::go();
     day_04::go();
     day_05::go();
+    day_06::go();
 }
 
 fn main() {
-    day_05::go();
+    day_06::go();
 }
